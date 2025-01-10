@@ -1,0 +1,16 @@
+class Solution:
+    def missingNumber(self, arr: List[int]) -> int:
+        minDiff = float('inf')
+        arr.sort()
+        for i in range(1, len(arr)):
+            t = abs(arr[i] - arr[i-1])
+            if minDiff > t:
+                minDiff = t
+
+        for i in range(len(arr)-1):
+            t = arr[i] + minDiff
+            if arr[i+1] != t:
+                return t
+        
+        if minDiff == 0:
+            return arr[0]
