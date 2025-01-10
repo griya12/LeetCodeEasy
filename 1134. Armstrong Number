@@ -1,0 +1,11 @@
+class Solution:
+    def isArmstrong(self, n: int) -> bool:
+        k = len(str(n))
+        og = n
+        s = 0
+        while n != 0:
+            t = n%10
+            n = n//10
+            s += pow(t, k)
+        
+        return s == og
