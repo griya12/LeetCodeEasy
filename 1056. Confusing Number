@@ -1,0 +1,22 @@
+class Solution:
+    def confusingNumber(self, n: int) -> bool:
+        reverseDict = dict()
+        reverseDict[0] = 0
+        reverseDict[1] = 1
+        reverseDict[6] = 9
+        reverseDict[9] = 6
+        reverseDict[8] = 8
+        newNum = 0
+        oldNum = n
+        while n != 0:
+            t = n % 10
+            if t not in reverseDict:
+                return False
+            t = reverseDict[t]
+            n = n // 10
+            if newNum == 0:
+                newNum = t
+            else:
+                newNum = newNum * 10 + t
+        
+        return oldNum != newNum
