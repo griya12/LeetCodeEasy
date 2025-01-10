@@ -1,0 +1,19 @@
+class Solution:
+    def stringShift(self, s: str, shift: List[List[int]]) -> str:
+        if len(shift) == 0:
+            return s
+        finalShift = 0
+
+        for i, j in shift:
+            if i == 0:
+                finalShift -= j
+            else:
+                finalShift += j
+        finalShift = finalShift % len(s)
+        if finalShift == 0:
+            return s
+        elif finalShift < 0:
+            finalShift = finalShift * -1
+            return s[finalShift+1:] + s[:finalShift+1]
+        else:
+            return s[finalShift*-1:] + s[:len(s)-finalShift]
